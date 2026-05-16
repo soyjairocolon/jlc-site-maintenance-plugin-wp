@@ -27,6 +27,22 @@ $deadline = isset($settings['deadline']) && !empty($settings['deadline'])
 
 $deadline_iso = $deadline . ':00-05:00';
 
+$countdown_days_label = isset($settings['countdown_days_label'])
+  ? trim((string) $settings['countdown_days_label'])
+  : 'Días';
+
+$countdown_hours_label = isset($settings['countdown_hours_label'])
+  ? trim((string) $settings['countdown_hours_label'])
+  : 'Horas';
+
+$countdown_minutes_label = isset($settings['countdown_minutes_label'])
+  ? trim((string) $settings['countdown_minutes_label'])
+  : 'Minutos';
+
+$countdown_seconds_label = isset($settings['countdown_seconds_label'])
+  ? trim((string) $settings['countdown_seconds_label'])
+  : 'Segundos';
+
 $instagram_url = isset($settings['instagram_url'])
   ? trim((string) $settings['instagram_url'])
   : '';
@@ -41,11 +57,11 @@ $whatsapp_url = isset($settings['whatsapp_url'])
 
 $desktop_bg = isset($settings['desktop_image_url']) && !empty($settings['desktop_image_url'])
   ? trim((string) $settings['desktop_image_url'])
-  : JLC_SM_URL . 'assets/images/banner-solo_mantenimiento_desktop.webp';
+  : JLC_SM_IMAGES_URL . 'banner-solo_mantenimiento_desktop.webp';
 
 $mobile_bg = isset($settings['mobile_image_url']) && !empty($settings['mobile_image_url'])
   ? trim((string) $settings['mobile_image_url'])
-  : JLC_SM_URL . 'assets/images/banner-solo_mantenimiento_mobile.webp';
+  : JLC_SM_IMAGES_URL . 'banner-solo_mantenimiento_mobile.webp';
 
 $footer_text = isset($settings['footer_text'])
   ? trim((string) $settings['footer_text'])
@@ -76,8 +92,56 @@ $has_brand = !empty($heading) || !empty($subheading);
 $has_socials = !empty($instagram_url) || !empty($email_address) || !empty($whatsapp_url);
 $has_footer = !empty($footer_text) || (!empty($footer_link_text) && !empty($footer_link_url));
 
-$css_url = JLC_SM_URL . 'assets/css/jlc-maintenance.css';
-$js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
+$css_url = JLC_SM_CSS_URL . 'jlc-maintenance.css';
+$js_url  = JLC_SM_JS_URL . 'jlc-maintenance.js';
+
+/**
+ * Dynamic style variables.
+ */
+$overlay_color = $settings['overlay_color'] ?? '#ff5f00';
+$overlay_opacity = $settings['overlay_opacity'] ?? '0.72';
+
+$heading_color = $settings['heading_color'] ?? '#ffffff';
+$heading_size_desktop = $settings['heading_size_desktop'] ?? '92';
+$heading_size_mobile = $settings['heading_size_mobile'] ?? '42';
+$heading_weight = $settings['heading_weight'] ?? '600';
+
+$subheading_color = $settings['subheading_color'] ?? '#ffffff';
+$subheading_size_desktop = $settings['subheading_size_desktop'] ?? '52';
+$subheading_size_mobile = $settings['subheading_size_mobile'] ?? '24';
+$subheading_weight = $settings['subheading_weight'] ?? '400';
+
+$message_color = $settings['message_color'] ?? '#ffffff';
+$message_size_desktop = $settings['message_size_desktop'] ?? '54';
+$message_size_mobile = $settings['message_size_mobile'] ?? '24';
+$message_weight = $settings['message_weight'] ?? '500';
+
+$icon_color = $settings['icon_color'] ?? '#ffffff';
+$icon_size_desktop = $settings['icon_size_desktop'] ?? '50';
+$icon_size_mobile = $settings['icon_size_mobile'] ?? '48';
+$icon_gap = $settings['icon_gap'] ?? '40';
+
+$countdown_card_background = $settings['countdown_card_background'] ?? '#000000';
+$countdown_card_opacity = $settings['countdown_card_opacity'] ?? '0.45';
+$countdown_card_radius = $settings['countdown_card_radius'] ?? '12';
+$countdown_card_width_desktop = $settings['countdown_card_width_desktop'] ?? '150';
+$countdown_card_height_desktop = $settings['countdown_card_height_desktop'] ?? '150';
+$countdown_card_height_mobile = $settings['countdown_card_height_mobile'] ?? '120';
+$countdown_gap = $settings['countdown_gap'] ?? '28';
+
+$countdown_number_color = $settings['countdown_number_color'] ?? '#ffffff';
+$countdown_number_size_desktop = $settings['countdown_number_size_desktop'] ?? '65';
+$countdown_number_size_mobile = $settings['countdown_number_size_mobile'] ?? '44';
+$countdown_number_weight = $settings['countdown_number_weight'] ?? '800';
+
+$countdown_label_color = $settings['countdown_label_color'] ?? '#ffffff';
+$countdown_label_size_desktop = $settings['countdown_label_size_desktop'] ?? '20';
+$countdown_label_size_mobile = $settings['countdown_label_size_mobile'] ?? '18';
+$countdown_label_weight = $settings['countdown_label_weight'] ?? '500';
+
+$footer_color = $settings['footer_color'] ?? '#ffffff';
+$footer_size_desktop = $settings['footer_size_desktop'] ?? '18';
+$footer_size_mobile = $settings['footer_size_mobile'] ?? '15';
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -110,6 +174,51 @@ $js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
     style="
       --jlc-sm-bg-desktop: url('<?php echo esc_url($desktop_bg); ?>');
       --jlc-sm-bg-mobile: url('<?php echo esc_url($mobile_bg); ?>');
+
+      --jlc-sm-overlay-color: <?php echo esc_attr($overlay_color); ?>;
+      --jlc-sm-overlay-opacity: <?php echo esc_attr($overlay_opacity); ?>;
+
+      --jlc-sm-heading-color: <?php echo esc_attr($heading_color); ?>;
+      --jlc-sm-heading-size-desktop: <?php echo esc_attr($heading_size_desktop); ?>px;
+      --jlc-sm-heading-size-mobile: <?php echo esc_attr($heading_size_mobile); ?>px;
+      --jlc-sm-heading-weight: <?php echo esc_attr($heading_weight); ?>;
+
+      --jlc-sm-subheading-color: <?php echo esc_attr($subheading_color); ?>;
+      --jlc-sm-subheading-size-desktop: <?php echo esc_attr($subheading_size_desktop); ?>px;
+      --jlc-sm-subheading-size-mobile: <?php echo esc_attr($subheading_size_mobile); ?>px;
+      --jlc-sm-subheading-weight: <?php echo esc_attr($subheading_weight); ?>;
+
+      --jlc-sm-message-color: <?php echo esc_attr($message_color); ?>;
+      --jlc-sm-message-size-desktop: <?php echo esc_attr($message_size_desktop); ?>px;
+      --jlc-sm-message-size-mobile: <?php echo esc_attr($message_size_mobile); ?>px;
+      --jlc-sm-message-weight: <?php echo esc_attr($message_weight); ?>;
+
+      --jlc-sm-icon-color: <?php echo esc_attr($icon_color); ?>;
+      --jlc-sm-icon-size-desktop: <?php echo esc_attr($icon_size_desktop); ?>px;
+      --jlc-sm-icon-size-mobile: <?php echo esc_attr($icon_size_mobile); ?>px;
+      --jlc-sm-icon-gap: <?php echo esc_attr($icon_gap); ?>px;
+
+      --jlc-sm-countdown-card-background: <?php echo esc_attr($countdown_card_background); ?>;
+      --jlc-sm-countdown-card-opacity: <?php echo esc_attr($countdown_card_opacity); ?>;
+      --jlc-sm-countdown-card-radius: <?php echo esc_attr($countdown_card_radius); ?>px;
+      --jlc-sm-countdown-card-width-desktop: <?php echo esc_attr($countdown_card_width_desktop); ?>px;
+      --jlc-sm-countdown-card-height-desktop: <?php echo esc_attr($countdown_card_height_desktop); ?>px;
+      --jlc-sm-countdown-card-height-mobile: <?php echo esc_attr($countdown_card_height_mobile); ?>px;
+      --jlc-sm-countdown-gap: <?php echo esc_attr($countdown_gap); ?>px;
+
+      --jlc-sm-countdown-number-color: <?php echo esc_attr($countdown_number_color); ?>;
+      --jlc-sm-countdown-number-size-desktop: <?php echo esc_attr($countdown_number_size_desktop); ?>px;
+      --jlc-sm-countdown-number-size-mobile: <?php echo esc_attr($countdown_number_size_mobile); ?>px;
+      --jlc-sm-countdown-number-weight: <?php echo esc_attr($countdown_number_weight); ?>;
+
+      --jlc-sm-countdown-label-color: <?php echo esc_attr($countdown_label_color); ?>;
+      --jlc-sm-countdown-label-size-desktop: <?php echo esc_attr($countdown_label_size_desktop); ?>px;
+      --jlc-sm-countdown-label-size-mobile: <?php echo esc_attr($countdown_label_size_mobile); ?>px;
+      --jlc-sm-countdown-label-weight: <?php echo esc_attr($countdown_label_weight); ?>;
+
+      --jlc-sm-footer-color: <?php echo esc_attr($footer_color); ?>;
+      --jlc-sm-footer-size-desktop: <?php echo esc_attr($footer_size_desktop); ?>px;
+      --jlc-sm-footer-size-mobile: <?php echo esc_attr($footer_size_mobile); ?>px;
     ">
     <section class="jlc-sm-content">
       <?php if ($has_brand) : ?>
@@ -131,22 +240,30 @@ $js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
       <div class="jlc-sm-countdown" aria-label="Contador de lanzamiento">
         <article class="jlc-sm-time-box">
           <strong id="jlc-sm-days">00</strong>
-          <span>Días</span>
+          <?php if (!empty($countdown_days_label)) : ?>
+            <span><?php echo esc_html($countdown_days_label); ?></span>
+          <?php endif; ?>
         </article>
 
         <article class="jlc-sm-time-box">
           <strong id="jlc-sm-hours">00</strong>
-          <span>Horas</span>
+          <?php if (!empty($countdown_hours_label)) : ?>
+            <span><?php echo esc_html($countdown_hours_label); ?></span>
+          <?php endif; ?>
         </article>
 
         <article class="jlc-sm-time-box">
           <strong id="jlc-sm-minutes">00</strong>
-          <span>Minutos</span>
+          <?php if (!empty($countdown_minutes_label)) : ?>
+            <span><?php echo esc_html($countdown_minutes_label); ?></span>
+          <?php endif; ?>
         </article>
 
         <article class="jlc-sm-time-box">
           <strong id="jlc-sm-seconds">00</strong>
-          <span>Segundos</span>
+          <?php if (!empty($countdown_seconds_label)) : ?>
+            <span><?php echo esc_html($countdown_seconds_label); ?></span>
+          <?php endif; ?>
         </article>
       </div>
 
@@ -190,7 +307,6 @@ $js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
           <?php endif; ?>
         </nav>
       <?php endif; ?>
-
     </section>
 
     <?php if ($has_footer) : ?>

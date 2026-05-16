@@ -1,3 +1,25 @@
+.jlc-sm-content-group {
+	padding: 22px 0;
+	border-bottom: 1px solid #eef0f3;
+}
+
+.jlc-sm-content-group:first-of-type {
+	padding-top: 0;
+}
+
+.jlc-sm-content-group:last-of-type {
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.jlc-sm-content-group h3 {
+	margin: 0 0 16px;
+	font-size: 16px;
+	font-weight: 700;
+	color: #111827;
+}
+
+/* Media */
 .jlc-sm-media-field {
 	display: flex;
 	align-items: center;
@@ -43,6 +65,55 @@
 	box-shadow: 0 10px 24px rgba(17, 24, 39, 0.08);
 }
 
+/* Style fields */
+.jlc-sm-style-grid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.jlc-sm-style-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 14px;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 14px;
+}
+
+.jlc-sm-style-field span {
+	font-size: 13px;
+	font-weight: 700;
+	color: #374151;
+}
+
+.jlc-sm-style-field input,
+.jlc-sm-style-field select {
+	width: 100%;
+	max-width: 100%;
+	min-height: 40px;
+}
+
+.jlc-sm-style-field input[type='color'] {
+	width: 100%;
+	height: 42px;
+	padding: 4px;
+	cursor: pointer;
+}
+
+@media (max-width: 1180px) {
+	.jlc-sm-style-grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+
+@media (max-width: 960px) {
+	.jlc-sm-style-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
 @media (max-width: 782px) {
 	.jlc-sm-media-field {
 		flex-direction: column;
@@ -52,5 +123,9 @@
 	.jlc-sm-upload-image.button {
 		width: 100%;
 		text-align: center;
+	}
+
+	.jlc-sm-style-grid {
+		grid-template-columns: 1fr;
 	}
 }
