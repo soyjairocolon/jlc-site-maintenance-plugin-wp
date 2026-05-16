@@ -1,0 +1,38 @@
+.jlc-sm-tabs {
+	border-bottom: 1px solid #d1d5db;
+	margin-bottom: 24px !important;
+}
+
+.jlc-sm-tabs .nav-tab {
+	border: 1px solid #d1d5db;
+	border-bottom: none;
+	background: #f9fafb;
+	color: #374151;
+	font-weight: 600;
+	padding: 12px 18px;
+	margin-left: 0;
+	margin-right: 6px;
+	border-radius: 10px 10px 0 0;
+	transition: all 0.2s ease;
+}
+
+.jlc-sm-tabs .nav-tab:hover {
+	background: #fff7ed;
+	color: #ff5f00;
+}
+
+.jlc-sm-tabs .nav-tab-active,
+.jlc-sm-tabs .nav-tab-active:focus,
+.jlc-sm-tabs .nav-tab-active:hover {
+	background: #ff5f00;
+	color: #ffffff;
+	border-color: #ff5f00;
+}
+
+@media (max-width: 782px) {
+	.jlc-sm-tabs .nav-tab {
+		margin-bottom: 6px;
+		border-radius: 10px;
+		border: 1px solid #d1d5db;
+	}
+}

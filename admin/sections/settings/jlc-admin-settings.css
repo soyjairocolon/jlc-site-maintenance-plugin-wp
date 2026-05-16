@@ -1,0 +1,17 @@
+.jlc-sm-checkbox-wrapper {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 14px;
+	background: #fff7ed;
+	border: 1px solid rgba(255, 95, 0, 0.18);
+	border-radius: 12px;
+	color: #111827;
+	font-weight: 600;
+}
+
+.jlc-sm-checkbox-wrapper input[type='checkbox'] {
+	width: 18px;
+	height: 18px;
+	accent-color: #ff5f00;
+}
