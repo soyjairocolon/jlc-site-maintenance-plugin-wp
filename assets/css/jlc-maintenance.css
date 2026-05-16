@@ -93,7 +93,8 @@ body.jlc-sm-body {
 	align-items: center;
 	gap: 28px;
 	flex-wrap: wrap;
-	margin-bottom: 48px;
+	margin: 10px 0 48px 0;
+
 }
 
 .jlc-sm-time-box {
@@ -165,13 +166,15 @@ body.jlc-sm-body {
 }
 
 .jlc-sm-message {
-	font-size: clamp(28px, 1.5vw, 54px);
+	font-size: clamp(20px, 1.5vw, 54px);
 	font-style: italic;
 	font-weight: 500;
 	line-height: 1.2;
+	text-wrap: balance;
 	color: var(--jlc-sm-white);
 	text-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 	max-width: 1000px;
+	margin-bottom: 10px;
 }
 
 .jlc-sm-footer {
@@ -237,7 +240,7 @@ body.jlc-sm-body {
 
 	.jlc-sm-countdown {
 		gap: 12px;
-		margin-bottom: 56px;
+		margin: 10px 0 56px 0;
 	}
 
 	.jlc-sm-time-box {
@@ -285,6 +288,6 @@ body.jlc-sm-body {
 	}
 
 	.jlc-sm-message {
-		font-size: 24px;
+		font-size: 20px;
 	}
 }

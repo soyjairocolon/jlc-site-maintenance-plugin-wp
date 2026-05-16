@@ -124,6 +124,10 @@ $js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
         </header>
       <?php endif; ?>
 
+      <?php if (!empty($message)) : ?>
+        <p class="jlc-sm-message"><?php echo esc_html($message); ?></p>
+      <?php endif; ?>
+
       <div class="jlc-sm-countdown" aria-label="Contador de lanzamiento">
         <article class="jlc-sm-time-box">
           <strong id="jlc-sm-days">00</strong>
@@ -187,9 +191,6 @@ $js_url  = JLC_SM_URL . 'assets/js/jlc-maintenance.js';
         </nav>
       <?php endif; ?>
 
-      <?php if (!empty($message)) : ?>
-        <p class="jlc-sm-message"><?php echo esc_html($message); ?></p>
-      <?php endif; ?>
     </section>
 
     <?php if ($has_footer) : ?>
